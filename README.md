@@ -1,6 +1,6 @@
 # Curso de Compiladores 2020, AAE
 
-Christiano Braga
+Renato De Vico
 
 Instituto de Computação  
 Universidade Federal Fluminense
