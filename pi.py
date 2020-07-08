@@ -1,7 +1,6 @@
 # coding: utf-8
 # <codecell>
 
-
 # <markdowncell>
 # # Compiler Construction with the π Framework
 #

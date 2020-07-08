@@ -1,7 +1,6 @@
 @@grammar::IMP
 @@eol_comments :: /#.*?$/
 
-
 @@keyword :: 'and'
 @@keyword :: 'not'
 @@keyword :: 'or'

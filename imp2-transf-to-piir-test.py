@@ -2,7 +2,6 @@ import unittest
 import tatsu
 from impiler import Impiler
 
-
 class TestImpToPiIR(unittest.TestCase):
     def setUp(self):
         imp_grammar_h = open('imp2.ebnf')
@@ -24,7 +23,6 @@ class TestImpToPiIR(unittest.TestCase):
     def test_cmd_parse1(self):
         pi_ast = ""
         self.__test_parse('examples/cmd-test1.imp2', pi_ast)
-
-
+        
 if __name__ == '__main__':
     unittest.main()
