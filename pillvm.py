@@ -4,18 +4,22 @@
 from pi import *
 import llvmlite.ir as ir
 import llvmlite.binding as llvm
-from ctypes import CFUNCTYPE, c_void_p # For JIT support
+from ctypes import CFUNCTYPE, c_void_p  # For JIT support
+
 
 class LLVMTypes:
     INT = ir.IntType(64)
     BOOL = ir.IntType(1)
     VOID = ir.VoidType()
 
+
 class LLVMConstants:
     TRUE = ir.Constant(LLVMTypes.BOOL, 1)
     FALSE = ir.Constant(LLVMTypes.BOOL, 0)
 
 # <codecell>
+
+
 class LLVMExp():
     def __init__(self, function):
         self.function = function
@@ -69,6 +73,8 @@ class LLVMExp():
             return self.compileNot(node)
 
 # <codecell>
+
+
 class LLVMCmd(LLVMExp):
     def __init__(self, function):
         self.env = {}
@@ -125,6 +131,7 @@ class LLVMCmd(LLVMExp):
             return self.compileLoop(node)
         else:
             return LLVMExp.compile(self, node)
+
 
 class LLVMDcl(LLVMCmd):
     def __init__(self, function):
@@ -184,6 +191,8 @@ class LLVMDcl(LLVMCmd):
             return LLVMCmd.compile(self, node)
 
 # <codecell>
+
+
 def pi_llvm(pi_ast):
     module = ir.Module('main_module')
     module.triple = llvm.get_default_triple()
@@ -199,6 +208,8 @@ def pi_llvm(pi_ast):
     return module
 
 # <codecell>
+
+
 def create_execution_engine():
     """
     Create an ExecutionEngine suitable for JIT code generation on
@@ -213,6 +224,7 @@ def create_execution_engine():
     engine = llvm.create_mcjit_compiler(backing_mod, target_machine)
     return engine
 
+
 def compile_ir(engine, llvm_ir):
     """
     Compile the LLVM IR string with the given engine.
@@ -225,6 +237,7 @@ def compile_ir(engine, llvm_ir):
     engine.add_module(mod)
     engine.finalize_object()
     return mod
+
 
 def pi_llvm_jit(module):
     # All these initializations are required for code generation!
