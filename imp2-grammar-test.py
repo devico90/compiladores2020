@@ -31,9 +31,9 @@ class TestImpGrammar(unittest.TestCase):
         self.__test_parse('examples/exp-test3.imp2',
                           "AST({'ds': [], 'cs': AST({'ac': AST({'idn': 'x', 'op': ':=', 'e': AST({'e1': '2', 'op': '>', 'e2': AST({'e': AST({'e1': 'x', 'op': '+', 'e2': '1'})})})})})})")
 
-    # def test_exp_parse4(self):
-    #     self.__test_parse('examples/exp-test4.imp2',
-    #                       "AST({'ds': [], 'cs': AST({'ac': AST({'idn': 'x', 'op': ':=', 'e': AST({'e1': '4', 'op': '+', 'e2': AST({'e1': '3', 'op': '-', 'e2': '5'})})})})})")
+    def test_exp_parse4(self):
+        self.__test_parse('examples/exp-test4.imp2',
+                          "AST({'ds': [], 'cs': AST({'ac': AST({'idn': 'x', 'op': ':=', 'e': AST({'e1': '4', 'op': '+', 'e2': AST({'e1': '3', 'op': '-', 'e2': '5'})})})})})")
 
     # def test_cmd_parse0(self):
     #     self.__test_parse('examples/cmd-test0.imp2',
