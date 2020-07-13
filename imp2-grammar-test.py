@@ -19,9 +19,9 @@ class TestImpGrammar(unittest.TestCase):
         self.__test_parse('examples/exp-test0.imp2',
                           "AST({'ds': [], 'cs': AST({'ac': AST({'idn': 'x', 'op': ':=', 'e': AST({'e': AST({'e1': '1', 'op': '<', 'e2': AST({'e': AST({'e': AST({'e1': '4', 'op': '*', 'e2': AST({'e': AST({'e1': '3', 'op': '/', 'e2': '3'})})})})})})})})})})")
 
-    # def test_exp_parse1(self):
-    #     self.__test_parse('examples/exp-test1.imp2',
-    #                       "AST({'ds': AST({'d': AST({'op': 'var', 'idn': 'y', 'e': AST({'e1': 'True', 'op': 'and', 'e2': AST({'e': AST({'e1': 'z', 'op': 'and', 'e2': AST({'e': AST({'op': 'not', 'e': 'True'})})})})})})})})")
+    def test_exp_parse1(self):
+        self.__test_parse('examples/exp-test1.imp2',
+                          "AST({'ds': AST({'d': AST({'op': 'var', 'idn': 'y', 'e': AST({'e1': 'True', 'op': 'and', 'e2': AST({'e': AST({'e1': 'z', 'op': 'and', 'e2': AST({'e': AST({'op': 'not', 'e': 'True'})})})})})})})})")
 
     # def test_exp_parse2(self):
     #     self.__test_parse('examples/exp-test2.imp2',
