@@ -35,9 +35,9 @@ class TestImpGrammar(unittest.TestCase):
         self.__test_parse('examples/exp-test4.imp2',
                           "AST({'ds': [], 'cs': AST({'ac': AST({'idn': 'x', 'op': ':=', 'e': AST({'e1': '4', 'op': '+', 'e2': AST({'e1': '3', 'op': '-', 'e2': '5'})})})})})")
 
-    # def test_cmd_parse0(self):
-    #     self.__test_parse('examples/cmd-test0.imp2',
-    #                       "AST({'ds': AST({'d': AST({'op': 'var', 'idn': ['x', 'y'], 'e': ['10', '1']})}), 'cs': AST({'ac': AST({'op': 'while', 't': AST({'e': AST({'e1': 'x', 'op': '>', 'e2': '0'})}), 'b': AST({'ds': [], 'cs': AST({'ac': [AST({'idn': 'y', 'op': ':=', 'e': AST({'e1': 'y', 'op': '*', 'e2': 'x'})}), AST({'idn': 'x', 'op': ':=', 'e': AST({'e1': 'x', 'op': '-', 'e2': '1'})})]})})})})})")
+    def test_cmd_parse0(self):
+        self.__test_parse('examples/cmd-test0.imp2',
+                          "AST({'ds': AST({'d': AST({'op': 'var', 'idn': ['x', 'y'], 'e': ['10', '1']})}), 'cs': AST({'ac': AST({'op': 'while', 't': AST({'e': AST({'e1': 'x', 'op': '>', 'e2': '0'})}), 'b': AST({'ds': [], 'cs': AST({'ac': [AST({'idn': 'y', 'op': ':=', 'e': AST({'e1': 'y', 'op': '*', 'e2': 'x'})}), AST({'idn': 'x', 'op': ':=', 'e': AST({'e1': 'x', 'op': '-', 'e2': '1'})})]})})})})})")
 
     # def test_cmd_parse1(self):
     #     self.__test_parse('examples/cmd-test1.imp2',
