@@ -47,9 +47,9 @@ class TestImpGrammar(unittest.TestCase):
         self.__test_parse('examples/def-test0.imp2',
                           "AST({'ds': AST({'d': AST({'op': 'def', 'idn': 'fat', 'f': ['x'], 'b': AST({'ds': AST({'d': [AST({'op': 'var', 'idn': 'z', 'e': 'x'}), AST({'op': 'var', 'idn': 'y', 'e': '1'})]}), 'cs': AST({'ac': AST({'op': 'while', 't': AST({'e': AST({'e1': 'z', 'op': '>', 'e2': '0'})}), 'b': AST({'ds': [], 'cs': AST({'ac': [AST({'idn': 'y', 'op': ':=', 'e': AST({'e1': 'y', 'op': '*', 'e2': 'z'})}), AST({'idn': 'z', 'op': ':=', 'e': AST({'e1': 'z', 'op': '-', 'e2': '1'})})]})})})})})})}), 'cs': AST({'ac': AST({'idn': 'fat', 'a': ['10']})})})")
 
-    # def test_def_parse1(self):
-    #     self.__test_parse('examples/def-test1.imp2',
-    #                       "AST({'ds': AST({'d': AST({'op': 'def', 'idn': 'fat', 'f': ['x', ',', 'y'], 'b': AST({'ds': [], 'cs': AST({'ac': AST({'op': 'if', 't': AST({'e': AST({'e1': 'x', 'op': '>', 'e2': '0'})}), 'b1': AST({'ds': [], 'cs': AST({'ac': AST({'idn': 'fat', 'a': [AST({'e1': 'x', 'op': '-', 'e2': '1'}), ',', AST({'e1': 'y', 'op': '*', 'e2': 'x'})]})})})})})})})}), 'cs': AST({'ac': AST({'idn': 'fat', 'a': ['10', ',', '1']})})})")
+    def test_def_parse1(self):
+        self.__test_parse('examples/def-test1.imp2',
+                          "AST({'ds': AST({'d': AST({'op': 'def', 'idn': 'fat', 'f': ['x', ',', 'y'], 'b': AST({'ds': [], 'cs': AST({'ac': AST({'op': 'if', 't': AST({'e': AST({'e1': 'x', 'op': '>', 'e2': '0'})}), 'b1': AST({'ds': [], 'cs': AST({'ac': AST({'idn': 'fat', 'a': [AST({'e1': 'x', 'op': '-', 'e2': '1'}), ',', AST({'e1': 'y', 'op': '*', 'e2': 'x'})]})})})})})})})}), 'cs': AST({'ac': AST({'idn': 'fat', 'a': ['10', ',', '1']})})})")
 
 
 if __name__ == '__main__':
