@@ -22,7 +22,7 @@ class TestImpToPiIR(unittest.TestCase):
         self.__test_parse('examples/cmd-test0.imp2', pi_ast)
 
     def test_cmd_parse1(self):
-        pi_ast = ""
+        pi_ast = "Blk(DSeq(DSeq(Bind(Id(x), Ref(Num(1))), Bind(Id(y), Ref(Num(0)))), Bind(Id(z), Ref(Num(0)))), CSeq(CSeq(CSeq(Assign(Id(x), Num(0)), Assign(Id(y), Num(1))), Assign(Id(z), Num(3))), Cond(Lt(Id(x), Num(2)), Blk(Assign(Id(z), Num(3))), Nop())))"
         self.__test_parse('examples/cmd-test1.imp2', pi_ast)
 
 
