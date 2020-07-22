@@ -18,7 +18,7 @@ class TestImpToPiIR(unittest.TestCase):
         self.assertEqual(str(pi_ast), ast)
 
     def test_cmd_parse0(self):
-        pi_ast = ""
+        pi_ast = "Blk(DSeq(Bind(Id(x), Ref(Num(10))), Bind(Id(y), Ref(Num(1)))), Loop(Gt(Id(x), Num(0)), Blk(CSeq(Assign(Id(y), Mul(Id(y), Id(x))), Assign(Id(x), Sub(Id(x), Num(1)))))))"
         self.__test_parse('examples/cmd-test0.imp2', pi_ast)
 
     def test_cmd_parse1(self):
