@@ -1,9 +1,10 @@
 import unittest
 import tatsu
 from impiler import Impiler
+from pi import run
 
 
-class TestImpToPiIR(unittest.TestCase):
+class TestImpToPiIRDecl(unittest.TestCase):
     def setUp(self):
         imp_grammar_h = open('imp2.ebnf')
         imp_grammar = imp_grammar_h.read()
@@ -17,13 +18,42 @@ class TestImpToPiIR(unittest.TestCase):
         pi_ast = self.parser.parse(source, semantics=Impiler())
         self.assertEqual(str(pi_ast), ast)
 
-    def test_cmd_parse0(self):
-        pi_ast = "Blk(DSeq(Bind(Id(x), Ref(Num(10))), Bind(Id(y), Ref(Num(1)))), Loop(Gt(Id(x), Num(0)), Blk(CSeq(Assign(Id(y), Mul(Id(y), Id(x))), Assign(Id(x), Sub(Id(x), Num(1)))))))"
-        self.__test_parse('examples/cmd-test0.imp2', pi_ast)
+    def __test_run(self, file_name, s, locs, env, sto, val, cnt):
+        source_h = open(file_name)
+        source = source_h.read()
+        source_h.close()
+        pi_ast = self.parser.parse(source, semantics=Impiler())
+        (tr, ns, dt) = run(pi_ast)
+        state_str = tr[s]
+        loc_str = "locs : " + locs
+        env_str = "env : " + env
+        sto_str = "sto : " + sto
+        val_str = "val : " + val
+        cnt_str = "cnt : " + cnt
+        self.assertTrue(loc_str in state_str)
+        self.assertTrue(env_str in state_str)
+        self.assertTrue(sto_str in state_str)
+        self.assertTrue(val_str in state_str)
+        self.assertTrue(cnt_str in state_str)
 
-    def test_cmd_parse1(self):
-        pi_ast = "Blk(DSeq(DSeq(Bind(Id(x), Ref(Num(1))), Bind(Id(y), Ref(Num(0)))), Bind(Id(z), Ref(Num(0)))), CSeq(CSeq(CSeq(Assign(Id(x), Num(0)), Assign(Id(y), Num(1))), Assign(Id(z), Num(3))), Cond(Lt(Id(x), Num(2)), Blk(Assign(Id(z), Num(3))), Nop())))"
-        self.__test_parse('examples/cmd-test1.imp2', pi_ast)
+    def test_fibo(self):
+        self.__test_parse('examples/fibo.imp2', "Blk(DSeq(DSeq(DSeq(Bind(Id(n), Ref(Num(10))), Bind(Id(i), Ref(Num(0)))), Bind(Id(j), Ref(Num(1)))), Bind(Id(k), Ref(Num(1)))), Loop(Lt(Id(k), Id(n)), Blk(Bind(Id(t), Ref(Num(0))), CSeq(CSeq(CSeq(Assign(Id(t), Sum(Id(i), Id(j))), Assign(Id(i), Id(j))), Assign(Id(j), Id(t))), Assign(Id(k), Sum(Id(k), Num(1)))))))")
+
+    def test_run(self):
+        # Qual o maior estado que no qual o comando Loop aparece no
+        # topo da ilha de controle?
+        s = 0
+        # Qual o estado do componente locs (BlockLocs) em s?
+        locs = "?"
+        # Qual o estado do componente env (Ambiente) em s?
+        env = "?"
+        # Qual o estado do componente sto (Memória) em s?
+        sto = "?"
+        # Qual o estado do componente val (Pilha de valores) em s?
+        val = "?"
+        # Qual o estado do componente cnt (Pilha de controle) em s?
+        cnt = "?"
+        self.__test_run('examples/fibo.imp2', s, locs, env, sto, val, cnt)
 
 
 if __name__ == '__main__':
