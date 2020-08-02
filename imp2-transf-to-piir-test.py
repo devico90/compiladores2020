@@ -42,17 +42,17 @@ class TestImpToPiIRDecl(unittest.TestCase):
     def test_run(self):
         # Qual o maior estado que no qual o comando Loop aparece no
         # topo da ilha de controle?
-        s = 0
+        s = 328
         # Qual o estado do componente locs (BlockLocs) em s?
-        locs = "?"
+        locs = "[4]"
         # Qual o estado do componente env (Ambiente) em s?
-        env = "?"
+        env = "{'n': 0, 'i': 1, 'j': 2, 'k': 3, 't': 4}"
         # Qual o estado do componente sto (Memória) em s?
-        sto = "?"
+        sto = "{0: 10, 1: 21, 2: 34, 3: 9, 4: 0}"
         # Qual o estado do componente val (Pilha de valores) em s?
-        val = "?"
+        val = "[[], {}, [0, 1, 2, 3], {'n': 0, 'i': 1, 'j': 2, 'k': 3}, 't', 55]"
         # Qual o estado do componente cnt (Pilha de controle) em s?
-        cnt = "?"
+        cnt = "['#BLKCMD', Loop(Lt(Id(k), Id(n)), Blk(Bind(Id(t), Ref(Num(0))), CSeq(CSeq(CSeq(Assign(Id(t), Sum(Id(i), Id(j))), Assign(Id(i), Id(j))), Assign(Id(j), Id(t))), Assign(Id(k), Sum(Id(k), Num(1)))))), '#BLKCMD', Assign(Id(k), Sum(Id(k), Num(1))), Assign(Id(j), Id(t)), Assign(Id(i), Id(j)), '#ASSIGN']"
         self.__test_run('examples/fibo.imp2', s, locs, env, sto, val, cnt)
 
 
