@@ -11,18 +11,3 @@ while (k < n)
     j := t;
     k := k + 1
 }
-
-#Blk(DSeq(DSeq(DSeq(Bind(Id(n), Ref(Num(10))), Bind(Id(i), Ref(Num(0)))), Bind(Id(j), Ref(Num(1)))), Bind(Id(k), Ref(Num(1)))), 
-#n = 10, i = 0, j = 1, k = 1
-#Loop(Lt(Id(k), Id(n)), 
-#while k < n 
-#Blk(Bind(Id(t), Ref(Num(0))),
-#t = 0
-#CSeq(CSeq(CSeq(Assign(Id(t), Sum(Id(i), Id(j))),
-#t := i + j
-#Assign(Id(i), Id(j))), 
-#i := j
-#Assign(Id(j), Id(t))), 
-#j := t
-#Assign(Id(k), Sum(Id(k), Num(1)))))))
-#k := k + 1
