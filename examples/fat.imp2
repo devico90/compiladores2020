@@ -1,0 +1,10 @@
+var z = 1;
+def fat(x)
+{
+	if (x > 0)
+    {
+		z := z*x;
+		fat(x-1)
+	}
+}
+fat(10)
